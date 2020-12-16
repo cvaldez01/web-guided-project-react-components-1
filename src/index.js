@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
 
 /*
@@ -22,14 +22,26 @@ import { render } from 'react-dom'
 */
 
 function App(props) {
+    const [count,setCount] = useState(0);
+    const [weapon,setWeapon]= useState('rock');
+
   return (
     <div className='container'>
       <h1>Welcome to React, Web {props.cohort}</h1>
+  <p> My name is {props.name}</p>
+    <h2>the count is : {count}</h2>
+  <button onClick={ e => setCount(count + 1) }>Increase</button>
+  <button onClick={ e => setCount(count - 1) }>Decrease</button>
+  <button onClick={ e => setCount(0) }>Reset Counter</button>
+
+  <h3> the weapon state is :{weapon}</h3>
+    <button onClick={e => setWeapon('paper')}>Paper</button>
+    <button onClick={e => setWeapon('Scissor')}>Scissor</button>
     </div>
   )
 }
 
 render(
-  <App cohort='37' />,
+  <App cohort='37' name='Claudio' />,
   document.querySelector('#root')
 )
